@@ -1,0 +1,39 @@
+#include<stdio.h>
+main()
+{
+	FILE *a1,*a2,*a3;
+	int n;
+	printf("enter the numbers");
+	a1=fopen("copy_o_e.txt","w");
+	while(1)
+	{
+		scanf("%d",&n);
+		if(n==0)
+		{
+			break;
+		}
+		putw(n,a1);
+	}
+	fclose(a1);
+	a1=fopen("copy_o_e.txt","r");
+	if(n%2==0)
+	{
+		a2=fopen("copy_even.txt","w");
+		while((n=getw(a1))!=EOF)
+		{
+			putw(n,a2);
+		}
+	}
+	a1=fopen("copy_o_e.txt","r");
+	if(n%2!=0)
+	{
+		a3=fopen("copy_odd.txt","w");
+		while((n=getw(a1))!=EOF)
+		{
+			putw(n,a3);
+		}
+	}
+	fclose(a1);
+	fclose(a2);
+	fclose(a3);
+}
